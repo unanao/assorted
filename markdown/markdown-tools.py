@@ -4,7 +4,8 @@
 """
 INSTALL:
 1. pdfkit
-2. https://wkhtmltopdf.org/downloads.html
+2. markdown
+3. https://wkhtmltopdf.org/downloads.html
 """
 
 import os
@@ -122,6 +123,58 @@ def to_pdf(file_name):
             padding-bottom: 10px;
             background-color: white;
             padding: 30px; }
+
+            h1, h2, h3, h4, h5, h6 {
+              margin: 20px 0 10px;
+              padding: 0;
+              font-weight: bold;
+              -webkit-font-smoothing: antialiased;
+              cursor: text;
+              position: relative; }
+
+            h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+              background: url("../../images/modules/styleguide/para.png") no-repeat 10px center;
+              text-decoration: none; }
+
+            h1 tt, h1 code {
+              font-size: inherit; }
+
+            h2 tt, h2 code {
+              font-size: inherit; }
+
+            h3 tt, h3 code {
+              font-size: inherit; }
+
+            h4 tt, h4 code {
+              font-size: inherit; }
+
+            h5 tt, h5 code {
+              font-size: inherit; }
+
+            h6 tt, h6 code {
+              font-size: inherit; }
+
+            h1 {
+              font-size: 28px;
+              color: black; }
+
+            h2 {
+              font-size: 24px;
+              border-bottom: 1px solid #cccccc;
+              color: black; }
+
+            h3 {
+              font-size: 18px; }
+
+            h4 {
+              font-size: 16px; }
+
+            h5 {
+              font-size: 14px; }
+
+            h6 {
+              color: #777777;
+              font-size: 14px; }
 
             table {
               padding: 0; }
