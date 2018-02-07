@@ -107,17 +107,47 @@ def to_pdf(file_name):
 
     html = markdown.markdown(text, extensions=exts)
 
-
     output_file = codecs.open(out_html, "w",encoding="utf-8",errors="xmlcharrefreplace")
 
-    github_css = os.path.dirname(__file__) + '/' + 'github.css'
-
+    # 可以根据选择修改css样式， 可以参考github.css和default.css
     css = '''
     <html">
     <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    	<link href="
-    ''' + github_css + '''" rel="stylesheet">
+        <style>
+            font-family: Helvetica, arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: white;
+            padding: 30px; }
+
+            table {
+              padding: 0; }
+              table tr {
+                border-top: 1px solid #cccccc;
+                background-color: white;
+                margin: 0;
+                padding: 0; }
+                table tr:nth-child(2n) {
+                  background-color: #f8f8f8; }
+                table tr th {
+                  font-weight: bold;
+                  border: 1px solid #cccccc;
+                  text-align: left;
+                  margin: 0;
+                  padding: 6px 13px; }
+                table tr td {
+                  border: 1px solid #cccccc;
+                  text-align: left;
+                  margin: 0;
+                  padding: 6px 13px; }
+                table tr th :first-child, table tr td :first-child {
+                  margin-top: 0; }
+                table tr th :last-child, table tr td :last-child {
+                  margin-bottom: 0;
+        </style>
     </head>
     <body>
     %s
@@ -128,19 +158,19 @@ def to_pdf(file_name):
     output_file.write(css % html)
     output_file.close()
 
-	
+
     pdfkit.from_file(out_html, out_file)
 
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
-        print ("Help >\n" + 
-			"> generate sequece number: markdown-tools.py name.md>\n" + 
+        print ("Help >\n" +
+			"> generate sequece number: markdown-tools.py name.md>\n" +
 			"> genereate pdf: markdown-tools.py pdf name.md>")
         os._exit(0)
-    
+
     if sys.argv[1] == 'pdf':
         to_pdf(sys.argv[2])
         os._exit(0)
-    
+
     reformat_md(sys.argv[1])
