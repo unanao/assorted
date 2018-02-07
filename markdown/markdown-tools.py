@@ -76,7 +76,7 @@ def reformat_md(filename):
         print ("%s file is not exist." % (filename))
         return
 
-    with open(filename, "r") as f:
+    with open(filename, mode="r", encoding="utf-8") as f:
         contents = f.read()
 
     line_list = contents.split("\n")
@@ -95,20 +95,19 @@ def reformat_md(filename):
 
 # 设置环境变量
 def to_pdf(file_name):
-    import codecs
     import markdown
 
     out_file = '.'.join([file_name.rsplit('.', 1)[0], 'pdf'])
     out_html = '.'.join([file_name.rsplit('.', 1)[0], 'html'])
 
-    input_file = codecs.open(file_name, mode="r", encoding="utf-8")
+    input_file = open(file_name, mode="r")
     text = input_file.read()
 
     exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite','markdown.extensions.tables','markdown.extensions.toc', 'markdown.extensions.nl2br']
 
     html = markdown.markdown(text, extensions=exts)
 
-    output_file = codecs.open(out_html, "w",encoding="utf-8",errors="xmlcharrefreplace")
+    output_file = open(out_html, "w",encoding="utf-8",errors="xmlcharrefreplace")
 
     # 可以根据选择修改css样式， 可以参考github.css和default.css
     css = '''
