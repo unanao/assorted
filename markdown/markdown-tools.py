@@ -3,9 +3,9 @@
 
 """
 INSTALL:
-1. pdfkit
-2. markdown
-3. https://wkhtmltopdf.org/downloads.html
+1. pip3 install pdfkit markdown
+2. apt-get install wkhtmltopdf
+   more platform: https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
 """
 
 import os
