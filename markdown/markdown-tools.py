@@ -11,6 +11,7 @@ INSTALL:
 import os
 import re
 import sys
+import string
 
 import pdfkit
 
@@ -33,6 +34,8 @@ def generate(prefix, line_list, current_sharp, start_index):
 
     head_pattern = re.compile(r"^(#+)\s*(.*)$")
     title_pattern = re.compile(r"^[\s\.\d]+(.*)$")
+    code_pattern = '```'
+    code_cnt = 0
 
     i = start_index
     while True:
@@ -40,6 +43,15 @@ def generate(prefix, line_list, current_sharp, start_index):
             break
 
         line = line_list[i]
+
+        line_trip = line.strip()
+        if line_trip.startswith(code_pattern):
+            code_cnt += 1
+        
+        if code_cnt % 2 == 1:
+            i += 1
+            continue;
+
         match = head_pattern.match(line)
         if match:
             sharp = match.group(1)
