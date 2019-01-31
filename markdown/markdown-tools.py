@@ -2,10 +2,14 @@
 # coding: utf-8
 
 """
-INSTALL:
+Ubuntu:
 1. pip3 install pdfkit markdown
 2. apt-get install wkhtmltopdf
    more platform: https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
+
+Windows：
+1. scoop install python wkhtmltopdf
+2. pip3 install pdfkit markdown
 """
 
 import os
@@ -112,7 +116,7 @@ def to_pdf(file_name):
     out_file = '.'.join([file_name.rsplit('.', 1)[0], 'pdf'])
     out_html = '.'.join([file_name.rsplit('.', 1)[0], 'html'])
 
-    input_file = open(file_name, mode="r")
+    input_file = open(file_name, mode="r", encoding="utf-8")
     text = input_file.read()
 
     exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite','markdown.extensions.tables','markdown.extensions.toc', 'markdown.extensions.nl2br']
