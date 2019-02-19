@@ -94,7 +94,7 @@ def reformat_md(filename):
     line_list = contents.split("\n")
     generate("", line_list, 1, 0)
 
-    with open(filename, "w") as f:
+    with open(filename, "w", encoding="utf-8") as f:
         size = len(line_list)
         i = 0
         while i < size - 1:
