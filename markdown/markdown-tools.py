@@ -229,6 +229,7 @@ def to_pdf(file_name):
 
     pdfkit.from_file(out_html, out_file)
 
+    os.remove(out_html)
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
